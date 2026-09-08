@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gonver — Gameplays en español</title>
+    <meta name="description" content="Canal de gonver (@gonverYT). Jugador de juegos: Hades, Halo y Minecraft en español." />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" href="assets/logo.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+
+    <header class="nav" id="nav">
+        <a class="nav__brand" href="index.html">
+            <img src="assets/logo.jpg" alt="Logo de gonver" />
+            <span>gonver</span>
+        </a>
+        <nav class="nav__links">
+            <a class="is-active" href="index.html">Inicio</a>
+            <a href="series.html">Series</a>
+            <a href="videos.html">Vídeos</a>
+        </nav>
+        <a class="btn btn--sm" href="https://www.youtube.com/@gonverYT?sub_confirmation=1" target="_blank" rel="noopener">Suscribirse</a>
+    </header>
+
+    <main id="top">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero__glow" aria-hidden="true"></div>
+            <img class="hero__banner" src="assets/banner.jpg" alt="" aria-hidden="true" />
+
+            <div class="hero__inner">
+                <div class="avatar">
+                    <img src="assets/logo.jpg" alt="Avatar del canal gonver" />
+                </div>
+
+                <p class="hero__handle">@gonverYT</p>
+                <h1 class="hero__title">gonver</h1>
+                <p class="hero__tagline">Jugador de juegos. Gameplays en español de <span>Hades</span>, <span>Halo</span> y <span>Minecraft</span>.</p>
+
+                <div class="hero__cta">
+                    <a class="btn" href="https://www.youtube.com/@gonverYT?sub_confirmation=1" target="_blank" rel="noopener">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 12s0-3.9-.5-5.8a3 3 0 0 0-2.1-2.1C18.5 3.5 12 3.5 12 3.5s-6.5 0-8.4.6A3 3 0 0 0 1.5 6.2C1 8.1 1 12 1 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 8.4.6 8.4.6s6.5 0 8.4-.6a3 3 0 0 0 2.1-2.1C23 15.9 23 12 23 12ZM9.8 15.5v-7l6.1 3.5-6.1 3.5Z"/></svg>
+                        Suscribirse
+                    </a>
+                    <a class="btn btn--ghost" href="https://gonverexe.github.io/ssp-web/" target="_blank" rel="noopener">Ir a SSP</a>
+                </div>
+
+                <ul class="stats">
+                    <li><strong data-stat="subscribers">0</strong><span>suscriptores</span></li>
+                    <li><strong data-stat="videos">0</strong><span>vídeos</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CONTACTO -->
+        <section class="section section--contact" id="contacto">
+            <div class="contact reveal">
+                <h2>¿Hablamos?</h2>
+                <p>Colaboraciones, dudas o simplemente saludar.</p>
+                <a class="mail" id="mailLink" href="mailto:gonveryt.contacto@gmail.com?subject=Hola%20gonver" title="Escribir a gonveryt.contacto@gmail.com">gonveryt.contacto@gmail.com</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <img src="assets/logo.jpg" alt="" aria-hidden="true" />
+        <p>© <span id="year"></span> gonver — <a href="https://www.youtube.com/@gonverYT" target="_blank" rel="noopener">youtube.com/@gonverYT</a></p>
+    </footer>
+
+    <script src="js/base.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
