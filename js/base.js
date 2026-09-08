@@ -1,6 +1,6 @@
 /* ===== gonver — base compartida =====
-   Datos del canal, acceso a la API de YouTube, navbar,
-   aparición al scroll y año del footer.
+    sDatos del canal, acceso a la API de YouTube, navbar,
+    aparición al scroll y año del footer.
    Se carga en las tres páginas, antes del script propio de cada una. */
 
 /* ---- Datos del canal ---- */
@@ -11,7 +11,7 @@ const EMAIL = 'gonveryt.contacto@gmail.com';
 const UPLOADS_PLAYLIST = 'UU' + CHANNEL_ID.slice(2);
 
 /* ---- Clave de la YouTube Data API v3 ----
-   Restringida a esta API en Google Cloud. Si se deja vacía, o si la
+    Restringida a esta API en Google Cloud. Si se deja vacía, o si la
    llamada falla, cada página muestra sus datos de respaldo. */
 const API_KEY = 'AIzaSyB4IA7oTdzKbFLrF2WnLgrnTyaw-Nz3Kqk';
 
