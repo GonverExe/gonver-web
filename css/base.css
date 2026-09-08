@@ -37,18 +37,72 @@ img{display:block;max-width:100%}
 
 /* ===== Botones ===== */
 .btn{
+    position:relative;
+    overflow:hidden;
     display:inline-flex;align-items:center;gap:.55rem;
     background:var(--cyan);color:#000;
     font-weight:700;font-size:.95rem;
     padding:.8rem 1.5rem;border-radius:999px;
     border:1px solid var(--cyan);
-    transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+    transition:transform .25s cubic-bezier(.34,1.56,.64,1),
+               box-shadow .25s ease,
+               background .25s ease,
+               border-color .25s ease;
 }
-.btn svg{width:20px;height:20px;fill:currentColor}
-.btn:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(34,224,224,.45)}
+
+/* Destello que cruza el botón al pasar el cursor */
+.btn::before{
+    content:"";
+    position:absolute;inset:0;
+    pointer-events:none;
+    background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.5) 50%,transparent 70%);
+    transform:translateX(-120%);
+}
+.btn:hover::before{
+    animation:shine .7s ease-out;
+}
+
+@keyframes shine{
+    to{transform:translateX(120%)}
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 0 32px rgba(34,224,224,.5);
+}
+.btn:active{
+    transform:translateY(-1px) scale(.97);
+    transition-duration:.08s;
+}
+
+/* Los iconos cobran vida con el botón */
+.btn svg{
+    width:20px;height:20px;fill:currentColor;
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+}
+.btn:hover svg{transform:scale(1.18)}
+
+/* Icono de imagen dentro de un botón (logo de SSP) */
+.btn__icon{
+    width:22px;height:22px;
+    object-fit:contain;
+    flex-shrink:0;
+    margin-left:-.15rem;
+    filter:drop-shadow(0 0 4px rgba(0,0,0,.6));
+    transition:transform .35s cubic-bezier(.34,1.56,.64,1),filter .35s ease;
+}
+.btn:hover .btn__icon{
+    transform:scale(1.15) rotate(-6deg);
+    filter:drop-shadow(0 0 8px rgba(34,224,224,.7));
+}
 
 .btn--ghost{background:transparent;color:var(--cyan);border-color:var(--line)}
-.btn--ghost:hover{background:var(--cyan-dim);border-color:var(--cyan);box-shadow:0 0 22px rgba(34,224,224,.2)}
+.btn--ghost:hover{background:var(--cyan-dim);border-color:var(--cyan);box-shadow:0 0 26px rgba(34,224,224,.28)}
+
+/* Sobre fondo negro el destello blanco deslumbra, se usa cian */
+.btn--ghost::before{
+    background:linear-gradient(110deg,transparent 30%,rgba(34,224,224,.3) 50%,transparent 70%);
+}
 
 .btn--sm{padding:.5rem 1.1rem;font-size:.85rem}
 
@@ -108,11 +162,6 @@ img{display:block;max-width:100%}
 
 /* ===== Secciones ===== */
 .section{max-width:var(--max);margin-inline:auto;padding:clamp(4rem,10vw,7rem) 1.25rem}
-.section__title{
-    font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;
-    margin-bottom:2rem;display:flex;align-items:center;gap:.85rem;
-}
-.section__title::after{content:"";flex:1;height:1px;background:var(--line)}
 .section__more{margin-top:2.5rem;text-align:center}
 
 .grid{display:grid;gap:1.1rem}

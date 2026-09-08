@@ -3,22 +3,18 @@
    Sin clave (o si la llamada falla) se usan los de abajo.
    Depende de js/base.js. */
 
-/* Últimos vídeos guardados (08/09/2026) */
+/* Últimos vídeos guardados (08/09/2026). Las miniaturas se piden
+   a los servidores de YouTube, que no gastan cuota de la API. */
 const VIDEOS = [
-    { id: '6RuyKjPmqd8', title: 'Hades Ep5, HIDRA CALAVÉRICA', serie: 'Hades', thumb: 'assets/thumbs/6RuyKjPmqd8.jpg' },
-    { id: '-hRDk6z_ZIg', title: 'Halo 2: Anniversary Ep5, EL ORÁCULO', serie: 'Halo 2', thumb: 'assets/thumbs/-hRDk6z_ZIg.jpg' },
-    { id: 'm8cZHLMNy3U', title: 'Hades Ep4', serie: 'Hades', thumb: 'assets/thumbs/m8cZHLMNy3U.jpg' },
-    { id: 's25mumRuzM0', title: 'Halo 2: Anniversary Ep4, EL INQUISIDOR', serie: 'Halo 2', thumb: 'assets/thumbs/s25mumRuzM0.jpg' },
-    { id: 'VpZNvHvNNrA', title: 'Hades Ep3, PRIMER JEFE', serie: 'Hades', thumb: 'assets/thumbs/VpZNvHvNNrA.jpg' },
-    { id: 'wEa2TtFX_M0', title: 'Hades Ep2, ESCUDO ÉGIDA', serie: 'Hades', thumb: 'assets/thumbs/wEa2TtFX_M0.jpg' }
+    { id: '6RuyKjPmqd8', title: 'Hades Ep5, HIDRA CALAVÉRICA', serie: 'Hades', thumb: 'https://i.ytimg.com/vi/6RuyKjPmqd8/hqdefault.jpg' },
+    { id: '-hRDk6z_ZIg', title: 'Halo 2: Anniversary Ep5, EL ORÁCULO', serie: 'Halo 2', thumb: 'https://i.ytimg.com/vi/-hRDk6z_ZIg/hqdefault.jpg' },
+    { id: 'm8cZHLMNy3U', title: 'Hades Ep4', serie: 'Hades', thumb: 'https://i.ytimg.com/vi/m8cZHLMNy3U/hqdefault.jpg' },
+    { id: 's25mumRuzM0', title: 'Halo 2: Anniversary Ep4, EL INQUISIDOR', serie: 'Halo 2', thumb: 'https://i.ytimg.com/vi/s25mumRuzM0/hqdefault.jpg' },
+    { id: 'VpZNvHvNNrA', title: 'Hades Ep3, PRIMER JEFE', serie: 'Hades', thumb: 'https://i.ytimg.com/vi/VpZNvHvNNrA/hqdefault.jpg' },
+    { id: 'wEa2TtFX_M0', title: 'Hades Ep2, ESCUDO ÉGIDA', serie: 'Hades', thumb: 'https://i.ytimg.com/vi/wEa2TtFX_M0/hqdefault.jpg' }
 ];
 
 const videoGrid = document.getElementById('videoGrid');
-
-/* Evita que un título rompa el HTML al insertarlo */
-const esc = (s) => String(s).replace(/[&<>"]/g, c => (
-    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]
-));
 
 /* La API no dice a qué serie pertenece un vídeo, así que se saca
    del propio título: lo que va antes de "Ep" o antes de la coma. */

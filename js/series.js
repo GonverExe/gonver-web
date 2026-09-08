@@ -7,31 +7,27 @@
 /* Listas guardadas (08/09/2026), ordenadas por último vídeo añadido.
    `count` cuenta solo los vídeos visibles para el público:
    Hades y Halo 2 tienen además episodios privados.
-   `updated` = fecha en que se añadió el último vídeo. */
+   `updated` = fecha en que se añadió el último vídeo. Las miniaturas
+   salen de los servidores de YouTube, que no gastan cuota. */
 const PLAYLISTS = [
-    { id: 'PLLuMoN0wTAYE', title: 'Hades', count: 5, thumb: 'assets/series/6RuyKjPmqd8.jpg', updated: '2026-09-07' },
-    { id: 'PLXmNr2rFZhbI', title: 'Halo 2: Anniversary', count: 5, thumb: 'assets/series/-hRDk6z_ZIg.jpg', updated: '2026-08-28' },
-    { id: 'PLweq8_0eVzE2LyytXi07ktzgwQ_KavB_w', title: 'Survival Single Player [SSP] 1.14', count: 5, thumb: 'assets/series/cXO41NqHXOk.jpg', updated: '2026-08-04' },
-    { id: 'PLweq8_0eVzE24dTIEd5Ns-keRAJepkI_z', title: 'Halo: Combat Evolved', count: 9, thumb: 'assets/series/yS_g1CNZWxk.jpg', updated: '2026-07-12' },
-    { id: 'PLweq8_0eVzE1ejVih9ngOuqi9c38Fe2yQ', title: 'Primeras impresiones', count: 3, thumb: 'assets/series/ILaI4iLS3t4.jpg', updated: '2026-06-07' },
-    { id: 'PLweq8_0eVzE3T3oVNm2t5OpauHpBXIV4t', title: 'Hitman: Blood Money', count: 1, thumb: 'assets/series/w4uxzJbbXaA.jpg', updated: '2026-06-04' },
-    { id: 'PLweq8_0eVzE3aBWY7aybTE4oRXlVunqDH', title: 'Subnautica 2', count: 8, thumb: 'assets/series/o7XorA_2T8Q.jpg', updated: '2026-06-01' },
-    { id: 'PLweq8_0eVzE1AHpg1hTbzFIglJuqDx924', title: 'Mierdi Cosos', count: 1, thumb: 'assets/series/2e7qTeihtAo.jpg', updated: '2026-05-22' },
-    { id: 'PLweq8_0eVzE2OoOgLVinRNDqN1RdWugfV', title: '🔵 Stream', count: 2, thumb: 'assets/series/m9pbqmEgu14.jpg', updated: '2026-05-14' },
-    { id: 'PLweq8_0eVzE3sQ_KCthFh5CETvHYvn0Mz', title: 'Counter Strike 2', count: 2, thumb: 'assets/series/FHcvxG6KEkI.jpg', updated: '2026-04-29' },
-    { id: 'PLweq8_0eVzE1D2yow4mqfuDEgkzM1myzd', title: 'Uncharted 4: Una década después', count: 15, thumb: 'assets/series/pfRVunBS1vg.jpg', updated: '2026-04-26' },
-    { id: 'PLweq8_0eVzE2LP3pf58ynLNKIFnriCG4R', title: 'Level Devil', count: 3, thumb: 'assets/series/-qRBgvuqGNs.jpg', updated: '2026-04-05' },
-    { id: 'PLweq8_0eVzE0NqFJQiUXiIsJjpbSZrTNb', title: 'Minecraft: One Block', count: 3, thumb: 'assets/series/tbOaqBltaHI.jpg', updated: '2026-04-04' },
-    { id: 'PLweq8_0eVzE0q8eeOJ-cxEi0QlLZ2w8av', title: 'Crimson Desert', count: 13, thumb: 'assets/series/koP1DkkQJlg.jpg', updated: '2026-03-28' },
-    { id: 'PLweq8_0eVzE1MZt3w0sC6rJJenk237J1A', title: 'Crisol: Theater of Idols', count: 4, thumb: 'assets/series/4eGmygsI0WY.jpg', updated: '2026-03-07' }
+    { id: 'PLLuMoN0wTAYE', title: 'Hades', count: 5, thumb: 'https://i.ytimg.com/vi/6RuyKjPmqd8/hqdefault.jpg', updated: '2026-09-07' },
+    { id: 'PLXmNr2rFZhbI', title: 'Halo 2: Anniversary', count: 5, thumb: 'https://i.ytimg.com/vi/-hRDk6z_ZIg/hqdefault.jpg', updated: '2026-08-28' },
+    { id: 'PLweq8_0eVzE2LyytXi07ktzgwQ_KavB_w', title: 'Survival Single Player [SSP] 1.14', count: 5, thumb: 'https://i.ytimg.com/vi/cXO41NqHXOk/hqdefault.jpg', updated: '2026-08-04' },
+    { id: 'PLweq8_0eVzE24dTIEd5Ns-keRAJepkI_z', title: 'Halo: Combat Evolved', count: 9, thumb: 'https://i.ytimg.com/vi/yS_g1CNZWxk/hqdefault.jpg', updated: '2026-07-12' },
+    { id: 'PLweq8_0eVzE1ejVih9ngOuqi9c38Fe2yQ', title: 'Primeras impresiones', count: 3, thumb: 'https://i.ytimg.com/vi/ILaI4iLS3t4/hqdefault.jpg', updated: '2026-06-07' },
+    { id: 'PLweq8_0eVzE3T3oVNm2t5OpauHpBXIV4t', title: 'Hitman: Blood Money', count: 1, thumb: 'https://i.ytimg.com/vi/w4uxzJbbXaA/hqdefault.jpg', updated: '2026-06-04' },
+    { id: 'PLweq8_0eVzE3aBWY7aybTE4oRXlVunqDH', title: 'Subnautica 2', count: 8, thumb: 'https://i.ytimg.com/vi/o7XorA_2T8Q/hqdefault.jpg', updated: '2026-06-01' },
+    { id: 'PLweq8_0eVzE1AHpg1hTbzFIglJuqDx924', title: 'Mierdi Cosos', count: 1, thumb: 'https://i.ytimg.com/vi/2e7qTeihtAo/hqdefault.jpg', updated: '2026-05-22' },
+    { id: 'PLweq8_0eVzE2OoOgLVinRNDqN1RdWugfV', title: '🔵 Stream', count: 2, thumb: 'https://i.ytimg.com/vi/m9pbqmEgu14/hqdefault.jpg', updated: '2026-05-14' },
+    { id: 'PLweq8_0eVzE3sQ_KCthFh5CETvHYvn0Mz', title: 'Counter Strike 2', count: 2, thumb: 'https://i.ytimg.com/vi/FHcvxG6KEkI/hqdefault.jpg', updated: '2026-04-29' },
+    { id: 'PLweq8_0eVzE1D2yow4mqfuDEgkzM1myzd', title: 'Uncharted 4: Una década después', count: 15, thumb: 'https://i.ytimg.com/vi/pfRVunBS1vg/hqdefault.jpg', updated: '2026-04-26' },
+    { id: 'PLweq8_0eVzE2LP3pf58ynLNKIFnriCG4R', title: 'Level Devil', count: 3, thumb: 'https://i.ytimg.com/vi/-qRBgvuqGNs/hqdefault.jpg', updated: '2026-04-05' },
+    { id: 'PLweq8_0eVzE0NqFJQiUXiIsJjpbSZrTNb', title: 'Minecraft: One Block', count: 3, thumb: 'https://i.ytimg.com/vi/tbOaqBltaHI/hqdefault.jpg', updated: '2026-04-04' },
+    { id: 'PLweq8_0eVzE0q8eeOJ-cxEi0QlLZ2w8av', title: 'Crimson Desert', count: 13, thumb: 'https://i.ytimg.com/vi/koP1DkkQJlg/hqdefault.jpg', updated: '2026-03-28' },
+    { id: 'PLweq8_0eVzE1MZt3w0sC6rJJenk237J1A', title: 'Crisol: Theater of Idols', count: 4, thumb: 'https://i.ytimg.com/vi/4eGmygsI0WY/hqdefault.jpg', updated: '2026-03-07' }
 ];
 
 const seriesGrid = document.getElementById('seriesGrid');
-
-/* Evita que un título rompa el HTML al insertarlo */
-const esc = (s) => String(s).replace(/[&<>"]/g, c => (
-    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]
-));
 
 const renderSeries = (list) => {
     /* Solo las 6 más recientes; el resto, en el botón "Ver más series" */

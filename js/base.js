@@ -4,7 +4,6 @@
    Se carga en las tres páginas, antes del script propio de cada una. */
 
 /* ---- Datos del canal ---- */
-const CHANNEL = 'https://www.youtube.com/@gonverYT';
 const CHANNEL_ID = 'UCmtrcdUj1xxc_CwrnDi2ZQQ';
 const EMAIL = 'gonveryt.contacto@gmail.com';
 
@@ -12,13 +11,17 @@ const EMAIL = 'gonveryt.contacto@gmail.com';
 const UPLOADS_PLAYLIST = 'UU' + CHANNEL_ID.slice(2);
 
 /* ---- Clave de la YouTube Data API v3 ----
-   PEGA AQUÍ TU CLAVE y la web se actualizará sola: suscriptores,
-   número de vídeos, últimos vídeos y listas de reproducción.
-   Mientras esté vacía se usan los datos guardados en cada página. */
+   Restringida a esta API en Google Cloud. Si se deja vacía, o si la
+   llamada falla, cada página muestra sus datos de respaldo. */
 const API_KEY = 'AIzaSyB4IA7oTdzKbFLrF2WnLgrnTyaw-Nz3Kqk';
 
 /* Cifras de respaldo (última comprobación: 08/09/2026) */
 const FALLBACK_STATS = { subscribers: 7, videos: 78 };
+
+/* Evita que un título con comillas o < > rompa el HTML al insertarlo */
+const esc = (s) => String(s).replace(/[&<>"]/g, c => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]
+));
 
 /* ---- Llamada a la API ----
    Devuelve el JSON, o lanza si la respuesta no es correcta. */
