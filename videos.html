@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vídeos — gonver</title>
+    <meta name="description" content="Últimos vídeos del canal de gonver (@gonverYT)." />
+    <meta name="theme-color" content="#000000" />
+    <link rel="icon" href="assets/logo.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/videos.css" />
+</head>
+<body>
+
+    <header class="nav" id="nav">
+        <a class="nav__brand" href="index.html">
+            <img src="assets/logo.jpg" alt="Logo de gonver" />
+            <span>gonver</span>
+        </a>
+        <nav class="nav__links">
+            <a href="index.html">Inicio</a>
+            <a href="series.html">Series</a>
+            <a class="is-active" href="videos.html">Vídeos</a>
+        </nav>
+        <a class="btn btn--sm" href="https://www.youtube.com/@gonverYT?sub_confirmation=1" target="_blank" rel="noopener">Suscribirse</a>
+    </header>
+
+    <main id="top">
+
+        <section class="page-head">
+            <div class="page-head__glow" aria-hidden="true"></div>
+            <p class="page-head__eyebrow">@gonverYT</p>
+            <h1>Vídeos</h1>
+            <p class="page-head__sub">Lo último que ha salido en el canal.</p>
+        </section>
+
+        <section class="section">
+            <div class="grid grid--3" id="videoGrid"></div>
+
+            <div class="section__more reveal">
+                <a class="btn btn--ghost" href="https://www.youtube.com/@gonverYT/videos" target="_blank" rel="noopener">Ver todos en YouTube</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <img src="assets/logo.jpg" alt="" aria-hidden="true" />
+        <p>© <span id="year"></span> gonver — <a href="https://www.youtube.com/@gonverYT" target="_blank" rel="noopener">youtube.com/@gonverYT</a></p>
+    </footer>
+
+    <script src="js/base.js"></script>
+    <script src="js/videos.js"></script>
+</body>
+</html>

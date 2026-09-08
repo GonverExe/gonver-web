@@ -1,0 +1,7 @@
+/* ===== videos.html — últimos vídeos =====
+   La tarjeta hereda de .card--media (css/base.css); aquí solo
+   se añade la etiqueta de serie sobre el título. */
+
+.card--video .tag{
+    font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);
+}

@@ -1,0 +1,173 @@
+/* ===== gonver — base compartida (tema OLED + cian) =====
+   Lo que usan las tres páginas: tokens, tipografía, navbar,
+   secciones, tarjetas genéricas, footer y utilidades. */
+
+/* ===== Tokens ===== */
+:root{
+    --bg:#000000;          /* negro OLED puro */
+    --surface:#070709;
+    --line:rgba(34,224,224,.16);
+    --text:#f2fbfc;
+    --muted:#8b979a;
+    --cyan:#22e0e0;
+    --cyan-soft:#4fe6e6;
+    --cyan-dim:rgba(34,224,224,.10);
+    --radius:16px;
+    --max:1120px;
+}
+
+/* ===== Reset ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+
+html{scroll-behavior:smooth}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+}
+
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+::selection{background:var(--cyan);color:#000}
+
+/* ===== Botones ===== */
+.btn{
+    display:inline-flex;align-items:center;gap:.55rem;
+    background:var(--cyan);color:#000;
+    font-weight:700;font-size:.95rem;
+    padding:.8rem 1.5rem;border-radius:999px;
+    border:1px solid var(--cyan);
+    transition:transform .2s ease,box-shadow .2s ease,background .2s ease;
+}
+.btn svg{width:20px;height:20px;fill:currentColor}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 28px rgba(34,224,224,.45)}
+
+.btn--ghost{background:transparent;color:var(--cyan);border-color:var(--line)}
+.btn--ghost:hover{background:var(--cyan-dim);border-color:var(--cyan);box-shadow:0 0 22px rgba(34,224,224,.2)}
+
+.btn--sm{padding:.5rem 1.1rem;font-size:.85rem}
+
+/* ===== Navbar ===== */
+.nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    padding:.9rem clamp(1rem,4vw,2.5rem);
+    border-bottom:1px solid transparent;
+    transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease;
+}
+.nav.is-scrolled{
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(14px);
+    border-bottom-color:var(--line);
+}
+.nav__brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.01em}
+.nav__brand img{width:32px;height:32px;border-radius:50%;border:1px solid var(--line)}
+.nav__links{display:flex;gap:1.6rem;font-size:.9rem;color:var(--muted)}
+.nav__links a{position:relative;transition:color .2s ease}
+.nav__links a::after{
+    content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;
+    background:var(--cyan);transition:width .25s ease;
+}
+.nav__links a:hover{color:var(--cyan)}
+.nav__links a:hover::after{width:100%}
+.nav__links a.is-active{color:var(--cyan)}
+.nav__links a.is-active::after{width:100%}
+
+/* ===== Cabecera de páginas internas ===== */
+.page-head{
+    position:relative;
+    padding:clamp(8rem,16vw,11rem) 1.25rem clamp(2rem,5vw,3rem);
+    text-align:center;
+    overflow:hidden;
+    isolation:isolate;
+}
+.page-head__glow{
+    position:absolute;z-index:-1;
+    top:-60%;left:50%;transform:translateX(-50%);
+    width:min(760px,130vw);aspect-ratio:1;
+    background:radial-gradient(circle,rgba(34,224,224,.16) 0%,transparent 62%);
+    pointer-events:none;
+}
+.page-head__eyebrow{
+    color:var(--cyan);font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;
+}
+.page-head h1{
+    font-size:clamp(2.4rem,8vw,4rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;
+    background:linear-gradient(180deg,#fff 30%,var(--cyan) 140%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    margin:.35rem 0 .6rem;
+}
+.page-head__sub{color:var(--muted);max-width:46ch;margin-inline:auto}
+
+.page-head + .section{padding-top:0}
+
+/* ===== Secciones ===== */
+.section{max-width:var(--max);margin-inline:auto;padding:clamp(4rem,10vw,7rem) 1.25rem}
+.section__title{
+    font-size:clamp(1.6rem,4vw,2.2rem);font-weight:700;letter-spacing:-.02em;
+    margin-bottom:2rem;display:flex;align-items:center;gap:.85rem;
+}
+.section__title::after{content:"";flex:1;height:1px;background:var(--line)}
+.section__more{margin-top:2.5rem;text-align:center}
+
+.grid{display:grid;gap:1.1rem}
+.grid--3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+
+/* ===== Tarjetas ===== */
+.card{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:0 0 34px rgba(34,224,224,.14)}
+
+/* Tarjeta con miniatura: la usan vídeos y listas de reproducción */
+.card--media{display:block}
+.card--media .thumb{position:relative;aspect-ratio:16/9;background:#000}
+.card--media .thumb img{width:100%;height:100%;object-fit:cover;transition:opacity .25s ease}
+.card--media:hover .thumb img{opacity:.6}
+
+.card--media .play{
+    position:absolute;inset:0;display:grid;place-items:center;
+    opacity:0;transition:opacity .25s ease;
+}
+.card--media:hover .play{opacity:1}
+.card--media .play svg{
+    width:54px;height:54px;fill:var(--cyan);
+    filter:drop-shadow(0 0 14px rgba(34,224,224,.6));
+}
+
+.card--media .meta{padding:1rem 1.1rem 1.2rem;display:grid;gap:.3rem}
+.card--media h3{font-size:.98rem;font-weight:500;line-height:1.4}
+
+/* ===== Footer ===== */
+.footer{
+    border-top:1px solid var(--line);
+    padding:2rem 1.25rem;
+    display:flex;flex-direction:column;align-items:center;gap:.75rem;
+    color:var(--muted);font-size:.85rem;text-align:center;
+}
+.footer img{width:34px;height:34px;border-radius:50%;opacity:.85}
+.footer a{color:var(--cyan)}
+
+/* ===== Aparición al hacer scroll ===== */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.is-visible{opacity:1;transform:none}
+
+/* ===== Responsive ===== */
+@media (max-width:720px){
+    .nav__links{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+    html{scroll-behavior:auto}
+}
