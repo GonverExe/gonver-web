@@ -35,6 +35,81 @@ img{display:block;max-width:100%}
 
 ::selection{background:var(--cyan);color:#000}
 
+/* ===== Fondo animado =====
+   Capa fija detrás de todo el contenido: destellos verticales
+   que caen y suben. */
+.bg-fx{
+    position:fixed;inset:0;z-index:-10;
+    pointer-events:none;overflow:hidden;
+    background:
+        radial-gradient(ellipse 70% 55% at 36% 44%,rgba(0,82,80,.32),transparent 70%),
+        radial-gradient(ellipse 55% 45% at 74% 66%,rgba(0,62,62,.24),transparent 72%);
+}
+
+/* Destellos verticales que recorren la pantalla */
+.bg-fx__rays span{
+    position:absolute;top:0;left:var(--x);
+    width:1px;height:var(--h);
+    background:linear-gradient(180deg,
+        transparent,
+        rgba(34,224,224,var(--a)) 25%,
+        rgba(214,250,252,var(--a)) 75%,
+        transparent);
+    animation:ray-fall var(--d) linear var(--delay) infinite;
+}
+
+/* La mitad sube en vez de caer; el degradado se invierte
+   para que la parte brillante siga siendo la que abre camino. */
+.bg-fx__rays span:nth-child(even){
+    background:linear-gradient(0deg,
+        transparent,
+        rgba(34,224,224,var(--a)) 25%,
+        rgba(214,250,252,var(--a)) 75%,
+        transparent);
+    animation-name:ray-rise;
+}
+
+.bg-fx__rays span:nth-child(1){--x:3%;--h:46vh;--a:.42;--d:16s;--delay:0s}
+.bg-fx__rays span:nth-child(2){--x:8%;--h:14vh;--a:.20;--d:13.5s;--delay:-4s}
+.bg-fx__rays span:nth-child(3){--x:11%;--h:62vh;--a:.12;--d:18.5s;--delay:-14s}
+.bg-fx__rays span:nth-child(4){--x:15%;--h:24vh;--a:.30;--d:25s;--delay:-11s}
+.bg-fx__rays span:nth-child(5){--x:19%;--h:38vh;--a:.16;--d:18s;--delay:-3s}
+.bg-fx__rays span:nth-child(6){--x:24%;--h:11vh;--a:.46;--d:12s;--delay:-6s}
+.bg-fx__rays span:nth-child(7){--x:30%;--h:56vh;--a:.13;--d:22s;--delay:-13s}
+.bg-fx__rays span:nth-child(8){--x:35%;--h:28vh;--a:.34;--d:15.5s;--delay:-2s}
+.bg-fx__rays span:nth-child(9){--x:41%;--h:68vh;--a:.10;--d:26s;--delay:-9s}
+.bg-fx__rays span:nth-child(10){--x:46%;--h:16vh;--a:.40;--d:14s;--delay:-15s}
+.bg-fx__rays span:nth-child(11){--x:49%;--h:10vh;--a:.48;--d:13s;--delay:-18s}
+.bg-fx__rays span:nth-child(12){--x:53%;--h:42vh;--a:.15;--d:19s;--delay:-7s}
+.bg-fx__rays span:nth-child(13){--x:57%;--h:58vh;--a:.11;--d:24s;--delay:-19s}
+.bg-fx__rays span:nth-child(14){--x:62%;--h:20vh;--a:.38;--d:15s;--delay:-1s}
+.bg-fx__rays span:nth-child(15){--x:67%;--h:50vh;--a:.14;--d:21s;--delay:-12s}
+.bg-fx__rays span:nth-child(16){--x:72%;--h:12vh;--a:.44;--d:12.5s;--delay:-5s}
+.bg-fx__rays span:nth-child(17){--x:77%;--h:64vh;--a:.10;--d:27s;--delay:-16s}
+.bg-fx__rays span:nth-child(18){--x:81%;--h:30vh;--a:.32;--d:16.5s;--delay:-8s}
+.bg-fx__rays span:nth-child(19){--x:86%;--h:15vh;--a:.41;--d:14.5s;--delay:-21s}
+.bg-fx__rays span:nth-child(20){--x:90%;--h:54vh;--a:.12;--d:23s;--delay:-4s}
+.bg-fx__rays span:nth-child(21){--x:94%;--h:26vh;--a:.36;--d:17s;--delay:-10s}
+.bg-fx__rays span:nth-child(22){--x:97%;--h:44vh;--a:.18;--d:20s;--delay:-17s}
+
+@keyframes ray-fall{
+    0%{transform:translateY(-40vh);opacity:0}
+    10%{opacity:1}
+    90%{opacity:1}
+    100%{transform:translateY(130vh);opacity:0}
+}
+
+@keyframes ray-rise{
+    0%{transform:translateY(130vh);opacity:0}
+    10%{opacity:1}
+    90%{opacity:1}
+    100%{transform:translateY(-40vh);opacity:0}
+}
+
+@media (max-width:720px){
+    .bg-fx__rays span:nth-child(n+13){display:none}
+}
+
 /* ===== Botones ===== */
 .btn{
     position:relative;
@@ -112,6 +187,8 @@ img{display:block;max-width:100%}
     display:flex;align-items:center;justify-content:space-between;gap:1rem;
     padding:.9rem clamp(1rem,4vw,2.5rem);
     border-bottom:1px solid transparent;
+    /* Velo tenue ya sin scroll, para que el texto no compita con el hero */
+    background:linear-gradient(180deg,rgba(0,0,0,.72),transparent);
     transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease;
 }
 .nav.is-scrolled{
@@ -119,8 +196,22 @@ img{display:block;max-width:100%}
     backdrop-filter:blur(14px);
     border-bottom-color:var(--line);
 }
+
+/* Filo cian que se enciende al separarse de lo alto de la página */
+.nav::after{
+    content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;
+    pointer-events:none;
+    background:linear-gradient(90deg,transparent,var(--cyan),transparent);
+    opacity:0;transition:opacity .3s ease;
+}
+.nav.is-scrolled::after{opacity:.5}
+
 .nav__brand{display:flex;align-items:center;gap:.6rem;font-weight:700;letter-spacing:.01em}
-.nav__brand img{width:32px;height:32px;border-radius:50%;border:1px solid var(--line)}
+.nav__brand img{
+    width:32px;height:32px;border-radius:50%;border:1px solid var(--line);
+    transition:border-color .25s ease,box-shadow .25s ease;
+}
+.nav__brand:hover img{border-color:var(--cyan);box-shadow:0 0 16px rgba(34,224,224,.45)}
 .nav__links{display:flex;gap:1.6rem;font-size:.9rem;color:var(--muted)}
 .nav__links a{position:relative;transition:color .2s ease}
 .nav__links a::after{
@@ -211,8 +302,15 @@ img{display:block;max-width:100%}
 .reveal.is-visible{opacity:1;transform:none}
 
 /* ===== Responsive ===== */
+/* En móvil no caben las tres zonas en una línea: los enlaces
+   bajan a una segunda fila centrada en vez de desaparecer. */
 @media (max-width:720px){
-    .nav__links{display:none}
+    .nav{flex-wrap:wrap;row-gap:.55rem;padding-bottom:.75rem}
+    .nav__links{
+        order:3;flex-basis:100%;
+        justify-content:center;gap:1.75rem;
+        font-size:.88rem;
+    }
 }
 
 @media (prefers-reduced-motion:reduce){

@@ -11,10 +11,16 @@
     overflow:hidden;
     isolation:isolate;
 }
-.hero__banner{
-    position:absolute;inset:0;z-index:-2;
+/* Banner y fundido a negro: viven en la capa de fondo global
+   (.bg-fx), no en el hero, para que no tapen el contenido. */
+.bg-fx__banner{
+    position:absolute;inset:0;
     width:100%;height:100%;object-fit:cover;
     opacity:.12;filter:blur(28px) saturate(1.3);
+}
+.bg-fx__fade{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 55%,#000 100%);
 }
 .hero__glow{
     position:absolute;z-index:-1;
@@ -23,11 +29,6 @@
     background:radial-gradient(circle,rgba(34,224,224,.20) 0%,rgba(34,224,224,.05) 42%,transparent 68%);
     pointer-events:none;
 }
-.hero::after{
-    content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-    background:linear-gradient(180deg,transparent 55%,#000 100%);
-}
-
 .hero__inner{max-width:760px;display:grid;justify-items:center;gap:1rem}
 
 .hero__handle{
@@ -64,6 +65,31 @@
 @keyframes float{
     0%,100%{transform:translateY(0)}
     50%{transform:translateY(-10px)}
+}
+
+/* ===== Cinta métrica =====
+   Separador entre el hero y el resto: una regla con marcas
+   arriba y abajo de la línea, menores cada 28px y mayores
+   cada 140px, desplazándose hacia la derecha. */
+.ruler{
+    height:40px;
+    margin-top:-40px;
+    background-image:
+        linear-gradient(var(--line),var(--line)),
+        repeating-linear-gradient(90deg,rgba(34,224,224,.45) 0 1px,transparent 1px 140px),
+        repeating-linear-gradient(90deg,rgba(34,224,224,.45) 0 1px,transparent 1px 140px),
+        repeating-linear-gradient(90deg,rgba(34,224,224,.20) 0 1px,transparent 1px 28px),
+        repeating-linear-gradient(90deg,rgba(34,224,224,.20) 0 1px,transparent 1px 28px);
+    background-size:100% 1px,140px 16px,140px 16px,28px 8px,28px 8px;
+    background-position:0 20px,0 4px,0 20px,0 12px,0 20px;
+    background-repeat:no-repeat,repeat-x,repeat-x,repeat-x,repeat-x;
+    animation:ruler-scroll 12s linear infinite;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+    mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+}
+
+@keyframes ruler-scroll{
+    to{background-position:0 20px,140px 4px,140px 20px,140px 12px,140px 20px}
 }
 
 /* ===== Contadores ===== */
