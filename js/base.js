@@ -7,8 +7,9 @@
 const CHANNEL_ID = 'UCmtrcdUj1xxc_CwrnDi2ZQQ';
 const EMAIL = 'gonveryt.contacto@gmail.com';
 
-/* La lista de subidas de un canal es su ID cambiando UC... por UU... */
-const UPLOADS_PLAYLIST = 'UU' + CHANNEL_ID.slice(2);
+/* La lista de subidas de un canal es su ID cambiando UC... por UU...
+   Con UULF... salen solo los vídeos normales, sin directos ni shorts. */
+const UPLOADS_PLAYLIST = 'UULF' + CHANNEL_ID.slice(2);
 
 /* ---- Clave de la YouTube Data API v3 ----
     Restringida a esta API en Google Cloud. Si se deja vacía, o si la

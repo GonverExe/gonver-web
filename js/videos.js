@@ -47,7 +47,7 @@ const loadVideos = async () => {
     if (!API_KEY) return;
 
     try {
-        const data = await cached('yt:videos', CACHE_TTL.videos, () => ytApi('playlistItems', {
+        const data = await cached('yt:videos:largos',CACHE_TTL.videos, () => ytApi('playlistItems', {
             part: 'snippet',
             playlistId: UPLOADS_PLAYLIST,
             maxResults: 6
